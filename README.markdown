@@ -12,7 +12,7 @@ To rename all files named file1.png, file2.png and so on to vacation1.png, vacat
 		mv file1.png vacation1.png
 		mv file2.png vacation2.png
 
-Verify the mv-command. If they look ok, add the -x parameter (execute):
+Verify the mv-commands. If they look ok, add the -x parameter (execute):
 
     ls | rubyeval -x "'mv ' + f + ' ' + f.gsub(/file/, 'vacation')"
 		mv file1.png vacation1.png
