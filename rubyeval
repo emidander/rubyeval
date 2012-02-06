@@ -1,0 +1,34 @@
+#!/usr/bin/env ruby
+
+def display_usage_and_exit()
+  puts "USAGE: rubyeach [-x] EXPRESSION"
+  puts ""
+  puts " EXPRESSION will have access to the variable 'l' for each line read."
+  puts ""
+  puts "  -x : execute the result of evaluating the expression for each row"
+  exit 1
+end
+
+execute = false
+while ARGV.size > 1 and ARGV[0] =~ /-.*/
+  opt = ARGV.shift
+  puts opt
+  if opt == "-e"
+    execute = true
+  else
+    display_usage_and_exit()
+  end
+end
+
+display_usage_and_exit() if ARGV.size == 0
+expression = ARGV.shift
+
+ARGF.readlines.each do |line|
+  line.chomp!
+  l = line    # just an alias
+  result = eval(expression)
+  puts result
+  if execute
+    system(result)
+  end
+end
