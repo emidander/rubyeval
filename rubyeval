@@ -12,7 +12,6 @@ end
 execute = false
 while ARGV.size > 1 and ARGV[0] =~ /-.*/
   opt = ARGV.shift
-  puts opt
   if opt == "-x"
     execute = true
   else
